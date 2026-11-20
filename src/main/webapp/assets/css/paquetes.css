@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121826;
+    color: #121826;
+}
+
+/* Barra superior */
+.navbar {
+    background-color: #717582;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #121826;
+    font-weight: bold;
+}
+
+.avatar-icon {
+    font-size: 1.8rem;
+}
+
+.btn-logout {
+    background-color: #F97316;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Estructura principal de 2 columnas */
+.contenedor {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Tarjeta del formulario */
+.card-formulario {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 32px;
+}
+
+.card-formulario h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 22px;
+}
+
+.campo {
+    margin-bottom: 16px;
+}
+
+.campo label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    margin-left: 8px;
+}
+
+.campo input[type="text"],
+.campo input[type="number"],
+.campo textarea {
+    width: 100%;
+    background-color: #dfe4ec;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.campo textarea {
+    border-radius: 14px;
+    height: 80px;
+    resize: none;
+}
+
+.fila-doble {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Checkboxes circulares */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px 8px;
+    margin-top: 10px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+.check-item input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.check-item input[type="checkbox"]:checked {
+    background-color: #F97316;
+}
+
+.btn-publicar {
+    display: block;
+    width: 85%;
+    margin: 28px auto 0;
+    padding: 12px;
+    background-color: #F97316;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-publicar:hover,
+.btn-logout:hover {
+    opacity: 0.92;
+}
+
+/* Lista de paquetes activos */
+.lista-paquetes h2 {
+    color: #ffffff;
+    font-size: 1.65rem;
+    font-weight: 400;
+    margin-bottom: 18px;
+}
+
+.tarjeta-paquete {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin-bottom: 18px;
+}
+
+.paquete-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.paquete-header h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.duracion {
+    font-size: 0.75rem;
+    color: #4b5563;
+}
+
+.acciones {
+    display: flex;
+    gap: 35px;
+}
+
+.acciones button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #121826;
+    cursor: pointer;
+}
+
+.acciones button:hover {
+    color: #F97316;
+}
+
+.paquete-servicios {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.85rem;
+}
+
+.paquete-servicios li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Adaptación básica para pantallas pequeñas */
+@media (max-width: 800px) {
+    .contenedor {
+        grid-template-columns: 1fr;
+    }
+}
