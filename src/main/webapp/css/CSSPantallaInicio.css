@@ -1,0 +1,114 @@
+:root {
+    --color-naranja: #F97316;
+    --color-barra: #717582;
+    --color-fondo: #121826;
+    --color-texto-oscuro: #17202A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: #717582;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #121826;
+    font-weight: bold;
+}
+
+.avatar-icon {
+    font-size: 1.8rem;
+}
+
+.btn-logout {
+    background-color: #F97316;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #e06613;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 800px;
+    padding: 4rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card h1 {
+    color: var(--color-texto-oscuro);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.card h2 {
+    color: var(--color-texto-oscuro);
+    font-size: 1.5rem;
+    margin-bottom: 3.5rem;
+    font-weight: 600;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.btn-action {
+    background-color: var(--color-naranja);
+    color: #ffffff;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(249, 115, 22, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-action:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(249, 115, 22, 0.4);
+}
