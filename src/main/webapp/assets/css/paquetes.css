@@ -223,3 +223,122 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* Contenedor centrado para pantallas individuales (Editar y Logout) */
+.contenedor-centrado {
+    max-width: 520px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.card-logout {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 36px 32px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.card-logout h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-logout p {
+    font-size: 0.92rem;
+    color: #4b5563;
+    margin-bottom: 26px;
+    line-height: 1.45;
+}
+
+.icono-estado {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffedd5;
+    color: #F97316;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.icono-estado.peligro {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.grupo-botones {
+    display: flex;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.btn-secundario,
+.btn-primario,
+.btn-peligro {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-secundario {
+    background-color: #dfe4ec;
+    color: #121826;
+}
+
+.btn-primario {
+    background-color: #F97316;
+    color: #ffffff;
+}
+
+.btn-peligro {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+.btn-secundario:hover,
+.btn-primario:hover,
+.btn-peligro:hover {
+    opacity: 0.92;
+}
+
+/* Alertas ligeras de confirmación (Publicar y Eliminar) */
+.alerta-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(18, 24, 38, 0.78);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.alerta-overlay.activo {
+    display: flex;
+}
+
+.alerta-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 28px 30px;
+    width: 100%;
+    max-width: 390px;
+    text-align: center;
+}
+
+.alerta-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.alerta-card p {
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.4;
+}
