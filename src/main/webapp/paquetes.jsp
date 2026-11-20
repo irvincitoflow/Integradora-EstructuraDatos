@@ -1,10 +1,10 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Paquetes</title>
-    <!-- Iconos de Bootstrap (necesarios para tus clases bi-*) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/paquetes.css">
 </head>
@@ -19,7 +19,6 @@
 </header>
 
 <main class="contenedor">
-    <!-- Columna Izquierda: Formulario -->
     <section class="card-formulario">
         <h2>Crear Paquete</h2>
 
@@ -61,7 +60,6 @@
         </form>
     </section>
 
-    <!-- Columna Derecha: Lista de Paquetes -->
     <section class="lista-paquetes">
         <h2>Paquetes Activos (3)</h2>
 
