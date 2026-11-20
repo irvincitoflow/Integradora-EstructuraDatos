@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: #121826;
+    min-height: 100vh;
+}
+.navbar{
+    background-color: #717582;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #121826;
+    font-weight: bold;
+}
+.avatar-icon{
+    font-size: 36px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.btn-logout{
+    background-color: #F97316;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.main-container{
+    max-width: 800px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.card{
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+}
+.search-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-group label{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.input-group input{
+    border: none;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    outline: none;
+    width: 250px;
+}
+.btn-principal{
+    background-color: #F97316;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.client-details p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+.client-details strong {
+    display: inline-block;
+    width: 150px; 
+}
+.counter-box {
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 20px 30px;
+    font-size: 45px;
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.service-bar {
+    background-color: #A3A3A3;
+    border-radius: 10px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #121826;
+}
