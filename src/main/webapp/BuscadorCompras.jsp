@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="mx.edu.utez.integradoraestructuradatos.ClienteTarjeta" %>
+<%@ page import="mx.edu.utez.integradoraestructuradatos.servlets.ClienteTarjeta" %>
 <%
     ClienteTarjeta cliente = (ClienteTarjeta) request.getAttribute("clienteEncontrado");
     String codigoBuscado = (String) request.getAttribute("codigoBuscado");

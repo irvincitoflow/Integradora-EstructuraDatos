@@ -1,10 +1,11 @@
-package mx.edu.utez.integradoraestructuradatos;
+package mx.edu.utez.integradoraestructuradatos.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import mx.edu.utez.integradoraestructuradatos.repository.RepositorioUsuarios;
 
 import java.io.IOException;
 
@@ -17,11 +18,16 @@ public class LoginServlet extends HttpServlet {
         String usuario = request.getParameter("usuario");
         String password = request.getParameter("password");
 
+        if (usuario == null || usuario.trim().isEmpty() || password == null || password.trim().isEmpty()) {
+            response.sendRedirect(request.getContextPath() + "/index.jsp?error=vacios");
+            return;
+        }
+
         if (RepositorioUsuarios.validarLogin(usuario, password)) {
             request.getSession().setAttribute("usuarioLogueado", usuario);
             response.sendRedirect(request.getContextPath() + "/PantallaInicio.jsp");
         } else {
-            response.sendRedirect(request.getContextPath() + "/login.jsp?error=credenciales");
+            response.sendRedirect(request.getContextPath() + "/index.jsp?error=credenciales");
         }
     }
 }

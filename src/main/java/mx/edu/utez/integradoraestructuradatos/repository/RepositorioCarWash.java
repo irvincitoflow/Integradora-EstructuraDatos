@@ -1,4 +1,6 @@
-package mx.edu.utez.integradoraestructuradatos;
+package mx.edu.utez.integradoraestructuradatos.repository;
+
+import mx.edu.utez.integradoraestructuradatos.servlets.ClienteTarjeta;
 
 import java.util.ArrayDeque;
 import java.util.HashMap;

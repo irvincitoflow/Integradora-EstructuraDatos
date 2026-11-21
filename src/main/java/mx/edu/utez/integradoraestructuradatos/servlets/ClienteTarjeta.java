@@ -1,4 +1,4 @@
-package mx.edu.utez.integradoraestructuradatos;
+package mx.edu.utez.integradoraestructuradatos.servlets;
 
 import java.util.ArrayList;
 import java.util.List;

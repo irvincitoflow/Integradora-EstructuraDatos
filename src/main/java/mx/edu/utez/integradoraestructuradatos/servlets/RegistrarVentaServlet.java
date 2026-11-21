@@ -1,10 +1,12 @@
-package mx.edu.utez.integradoraestructuradatos;
+package mx.edu.utez.integradoraestructuradatos.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import mx.edu.utez.integradoraestructuradatos.repository.RepositorioCarWash;
+
 import java.io.IOException;
 
 @WebServlet("/RegistrarVentaServlet")

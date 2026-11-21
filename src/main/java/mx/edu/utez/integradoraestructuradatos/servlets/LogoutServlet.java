@@ -1,4 +1,4 @@
-package mx.edu.utez.integradoraestructuradatos;
+package mx.edu.utez.integradoraestructuradatos.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,6 +23,6 @@ public class LogoutServlet extends HttpServlet {
         }
 
         // Redirige a la pantalla de inicio de sesión
-        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 }

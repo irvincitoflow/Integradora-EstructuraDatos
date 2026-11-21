@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ page import="mx.edu.utez.integradoraestructuradatos.RepositorioCarWash" %>
+<%@ page import="mx.edu.utez.integradoraestructuradatos.repository.RepositorioCarWash" %>
 <%@ page import="java.util.Queue" %>
 <%
     String tarjetaRegistrada = request.getParameter("tarjeta");
