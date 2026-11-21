@@ -20,7 +20,7 @@
 
         <div class="grupo-botones">
             <button type="button" class="btn-secundario" onclick="history.back()">Cancelar</button>
-            <button type="button" class="btn-primario" onclick="location.href='index.jsp'">Sí, cerrar sesión</button>
+            <button type="button" class="btn-primario" onclick="location.href='login.jsp'">Sí, cerrar sesión</button>
         </div>
     </section>
 </main>

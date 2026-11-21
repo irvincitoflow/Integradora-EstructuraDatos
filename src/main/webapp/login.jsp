@@ -18,8 +18,15 @@
             </div>
 
             <h1>Inicio de Sesión</h1>
+            <% if ("credenciales".equals(request.getParameter("error"))) { %>
+            <p style="color: red;">Usuario o contraseña incorrectos.</p>
+            <% } else if ("ya_existe".equals(request.getParameter("aviso"))) { %>
+            <p style="color: orange;">Ese usuario ya tiene cuenta. Inicia sesión aquí.</p>
+            <% } else if ("registrado".equals(request.getParameter("aviso"))) { %>
+            <p style="color: green;">Cuenta creada con éxito. Ya puedes entrar.</p>
+            <% } %>
 
-            <form action="#" method="post" class="login-form">
+            <form action="LoginServlet" method="post" class="login-form">
                 <div class="form-group">
                     <label for="usuario">Usuario</label>
                     <input type="text" id="usuario" name="usuario" required autocomplete="username">

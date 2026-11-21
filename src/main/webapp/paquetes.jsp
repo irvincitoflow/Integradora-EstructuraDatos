@@ -15,7 +15,9 @@
         <i class="bi bi-person-circle avatar-icon"></i>
         <span>Usuario</span>
     </div>
-    <button class="btn-logout">Cerrar Sesion <i class="bi bi-box-arrow-right ms-1"></i></button>
+    <button type="button" class="btn-logout" onclick="location.href='${pageContext.request.contextPath}/Logout.jsp'">
+        Cerrar Sesion <i class="bi bi-box-arrow-right ms-1"></i>
+    </button>
 </header>
 
 <main class="contenedor">

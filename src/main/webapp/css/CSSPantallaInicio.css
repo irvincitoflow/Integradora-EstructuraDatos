@@ -36,7 +36,11 @@ body {
 }
 
 .avatar-icon {
-    font-size: 1.8rem;
+    font-size: 36px;
+    color: white;
+    display: flex;
+    align-items: center;
+
 }
 
 .btn-logout {
