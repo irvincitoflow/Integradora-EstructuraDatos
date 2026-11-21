@@ -1,9 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-    // Evita que el navegador guarde la página en caché al cerrar sesión
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-
-    // Si no hay usuario logueado en la sesión, lo regresa al login
     if (session.getAttribute("usuarioLogueado") == null) {
         response.sendRedirect(request.getContextPath() + "/index.jsp");
         return;
@@ -23,7 +20,7 @@
 <header class="navbar">
     <div class="user-info">
         <i class="bi bi-person-circle avatar-icon"></i>
-        <span>${sessionScope.get("usuarioLogueado")}</span>
+        <span>${sessionScope.usuarioLogueado}</span>
     </div>
     <button type="button" class="btn-logout" onclick="location.href='${pageContext.request.contextPath}/Logout.jsp'">
         Cerrar Sesion <i class="bi bi-box-arrow-right ms-1"></i>
@@ -41,6 +38,9 @@
             </button>
             <button type="button" class="btn-action" onclick="location.href='${pageContext.request.contextPath}/PantallaPrincipal.jsp'">
                 Registrar venta
+            </button>
+            <button type="button" class="btn-action" onclick="location.href='${pageContext.request.contextPath}/GestionPaquetes.jsp'">
+                Gestionar paquetes
             </button>
         </div>
     </div>

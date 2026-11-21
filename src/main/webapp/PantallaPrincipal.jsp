@@ -1,9 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ page import="mx.edu.utez.integradoraestructuradatos.repository.RepositorioCarWash" %>
-<%@ page import="java.util.Queue" %>
+<%@ page import="mx.edu.utez.integradoraestructuradatos.repository.RepositorioPaquetes" %>
+<%@ page import="mx.edu.utez.integradoraestructuradatos.estructurasDatos.ListaDoblePaquetes" %>
+<%@ page import="mx.edu.utez.integradoraestructuradatos.estructurasDatos.nodos.NodoPaquete" %>
 <%
     String tarjetaRegistrada = request.getParameter("tarjeta");
-    Queue<String> cola = RepositorioCarWash.getColaLavado();
+    ListaDoblePaquetes listaPaquetes = RepositorioPaquetes.obtenerTodos();
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,7 +20,7 @@
 <header class="navbar">
     <div class="user-info">
         <i class="bi bi-person-circle avatar-icon"></i>
-        <span>Usuario</span>
+        <span>${usuarioLogueado}</span>
     </div>
     <div style="display: flex; gap: 10px;">
         <button type="button" class="btn-logout" style="background-color: #475569;"
@@ -36,121 +37,83 @@
 <main class="home-container">
     <section class="welcome-header">
         <h1>Registrar Venta</h1>
-        <p>Verifica los datos de la tarjeta y selecciona el paquete de la compra</p>
+        <p>Ingresa los datos del cliente y selecciona el paquete de lavado</p>
     </section>
 
     <% if ("1".equals(request.getParameter("exito")) && tarjetaRegistrada != null) { %>
     <section class="card" style="width: 100%; border-left: 6px solid #16a34a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
         <div>
-            <strong style="color: #16a34a;">¡Venta registrada con éxito!</strong>
-            <p style="font-size: 14px; margin-top: 4px;">Se sumó la compra y visita a la tarjeta <strong><%= tarjetaRegistrada %></strong>.</p>
+            <strong style="color: #16a34a;">¡Servicio registrado en el historial!</strong>
+            <p style="font-size: 14px; margin-top: 4px;">Se guardó el lavado en la tarjeta <strong><%= tarjetaRegistrada %></strong>.</p>
         </div>
         <button type="button" class="btn-principal"
                 onclick="location.href='${pageContext.request.contextPath}/BuscarTarjetaServlet?tarjeta=<%= tarjetaRegistrada %>'">
             Ver en Buscador de Tarjetas
         </button>
     </section>
+    <% } else if ("binario".equals(request.getParameter("error"))) { %>
+    <section class="card" style="width: 100%; border-left: 6px solid #dc2626;">
+        <strong style="color: #dc2626;">Tarjeta inválida:</strong> Debe ser un número binario de exactamente 8 dígitos (ej. 00000001).
+    </section>
+    <% } else if ("vacios".equals(request.getParameter("error"))) { %>
+    <section class="card" style="width: 100%; border-left: 6px solid #dc2626;">
+        <strong style="color: #dc2626;">Campos incompletos:</strong> Llena nombre, matrículas y tarjeta antes de elegir un paquete.
+    </section>
     <% } %>
 
-    <!-- Formulario oculto que envía la venta al Servlet -->
     <form id="form-venta" action="${pageContext.request.contextPath}/RegistrarVentaServlet" method="post">
         <input type="hidden" name="paquete" id="input-paquete">
         <input type="hidden" name="precio" id="input-precio">
         <input type="hidden" name="tarjeta" id="input-tarjeta">
         <input type="hidden" name="nombreCliente" id="input-nombre">
+        <input type="hidden" name="matriculas" id="input-matriculas">
     </form>
 
     <section class="packages-grid">
+        <%
+            NodoPaquete actual = listaPaquetes.cabeza;
+            while (actual != null) {
+        %>
         <article class="card package-card">
             <div class="package-content">
                 <div class="package-top">
-                    <h2>Lavado Expres</h2>
-                    <span class="package-price">$50</span>
+                    <h2><%= actual.dato.nombre %></h2>
+                    <span class="package-price">$<%= actual.dato.precio %></span>
                 </div>
-                <p class="package-duration"><strong>Duración:</strong> 30 min</p>
-                <p class="services-title">Servicio:</p>
-                <ul class="package-features">
-                    <li><i class="bi bi-check-lg"></i> Aspirado</li>
-                    <li><i class="bi bi-check-lg"></i> Lavado Exterior</li>
-                </ul>
+                <p class="package-duration"><strong>Duración:</strong> <%= actual.dato.duracionMinutos %> min</p>
+                <p class="services-title">Descripción:</p>
+                <p style="font-size: 14px; color: #475569; line-height: 1.5;"><%= actual.dato.descripcion %></p>
             </div>
-            <button type="button" class="btn-principal btn-select" onclick="registrarCompra('Lavado Expres', '50')">
+            <button type="button" class="btn-principal btn-select"
+                    onclick="registrarCompra('<%= actual.dato.nombre %>', '<%= actual.dato.precio %>')">
                 Seleccionar
             </button>
         </article>
-
-        <article class="card package-card">
-            <div class="package-content">
-                <div class="package-top">
-                    <h2>Lavado Plus</h2>
-                    <span class="package-price">$80</span>
-                </div>
-                <p class="package-duration"><strong>Duración:</strong> 60 min</p>
-                <p class="services-title">Servicio:</p>
-                <ul class="package-features">
-                    <li><i class="bi bi-check-lg"></i> Aspirado</li>
-                    <li><i class="bi bi-check-lg"></i> Lavado Exterior</li>
-                    <li><i class="bi bi-check-lg"></i> Encerado</li>
-                </ul>
-            </div>
-            <button type="button" class="btn-principal btn-select" onclick="registrarCompra('Lavado Plus', '80')">
-                Seleccionar
-            </button>
-        </article>
-
-        <article class="card package-card">
-            <div class="package-content">
-                <div class="package-top">
-                    <h2>Full Pack</h2>
-                    <span class="package-price">$250</span>
-                </div>
-                <p class="package-duration"><strong>Duración:</strong> 120 min</p>
-                <p class="services-title">Servicio:</p>
-                <ul class="package-features">
-                    <li><i class="bi bi-check-lg"></i> Aspirado</li>
-                    <li><i class="bi bi-check-lg"></i> Lavado Exterior</li>
-                    <li><i class="bi bi-check-lg"></i> Encerado</li>
-                    <li><i class="bi bi-check-lg"></i> Motor</li>
-                </ul>
-            </div>
-            <button type="button" class="btn-principal btn-select" onclick="registrarCompra('Full Pack', '250')">
-                Seleccionar
-            </button>
-        </article>
+        <%
+                actual = actual.siguiente;
+            }
+        %>
     </section>
 
     <section class="card client-info-card">
-        <h3>Información del Cliente</h3>
+        <h3>Información del Cliente y Vehículo</h3>
         <div class="client-details">
             <p>
-                <strong>Nombre</strong>
-                <input type="text" id="campo-nombre" placeholder="Ingresa el nombre del cliente"
+                <strong>Nombre del cliente</strong>
+                <input type="text" id="campo-nombre" placeholder="Ej. Carlos Perez" required
                        style="padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; width: 65%;">
             </p>
             <p>
-                <strong>Número de tarjeta</strong>
-                <input type="text" id="campo-tarjeta" placeholder="Ingresa el código de tarjeta" required
+                <strong>Matrículas / Placas</strong>
+                <input type="text" id="campo-matriculas" placeholder="Ej. PXA-123-A" required
+                       style="padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; width: 65%;">
+            </p>
+            <p>
+                <strong>Número de tarjeta (8 bits)</strong>
+                <input type="text" id="campo-tarjeta" maxlength="8" placeholder="Ej. 00000001" required
                        style="padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; width: 65%;">
             </p>
         </div>
-    </section>
-
-    <!-- Visualización de la Cola (FIFO) de turnos de lavado -->
-    <section class="card client-info-card">
-        <h3>Cola de Lavado en Espera (<%= cola.size() %>)</h3>
-        <% if (cola.isEmpty()) { %>
-        <p style="font-size: 14px; color: #64748b;">No hay autos en espera en este momento.</p>
-        <% } else { %>
-        <ol style="margin-left: 20px; font-size: 14px; color: #1E293B; line-height: 1.8;">
-            <% for (String turno : cola) { %>
-            <li><%= turno %></li>
-            <% } %>
-        </ol>
-        <form action="${pageContext.request.contextPath}/RegistrarVentaServlet" method="post" class="client-actions">
-            <input type="hidden" name="accion" value="atender">
-            <button type="submit" class="btn-principal">Despachar siguiente auto (Atender)</button>
-        </form>
-        <% } %>
     </section>
 </main>
 
@@ -158,10 +121,10 @@
     function registrarCompra(paquete, precio) {
         var tarjeta = document.getElementById('campo-tarjeta').value.trim();
         var nombre = document.getElementById('campo-nombre').value.trim();
+        var matriculas = document.getElementById('campo-matriculas').value.trim();
 
-        if (!tarjeta) {
-            alert('Por favor ingresa un número de tarjeta antes de seleccionar el paquete.');
-            document.getElementById('campo-tarjeta').focus();
+        if (!nombre || !matriculas || !tarjeta) {
+            alert('Por favor ingresa nombre del cliente, matrículas y número de tarjeta antes de seleccionar un paquete.');
             return;
         }
 
@@ -169,6 +132,7 @@
         document.getElementById('input-precio').value = precio;
         document.getElementById('input-tarjeta').value = tarjeta;
         document.getElementById('input-nombre').value = nombre;
+        document.getElementById('input-matriculas').value = matriculas;
 
         document.getElementById('form-venta').submit();
     }

@@ -5,7 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import mx.edu.utez.integradoraestructuradatos.repository.RepositorioCarWash;
+import mx.edu.utez.integradoraestructuradatos.estructurasDatos.PilaServicio;
+import mx.edu.utez.integradoraestructuradatos.repository.RepositorioServicios;
+import mx.edu.utez.integradoraestructuradatos.repository.RepositorioTarjeta;
 
 import java.io.IOException;
 
@@ -16,10 +18,19 @@ public class BuscarTarjetaServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String codigo = request.getParameter("tarjeta");
-        ClienteTarjeta resultado = RepositorioCarWash.buscarTarjeta(codigo);
+        if (codigo != null) {
+            codigo = codigo.trim();
+        }
+
+        boolean existe = RepositorioTarjeta.existeTarjeta(codigo);
+        PilaServicio historial = RepositorioServicios.obtenerPorTarjeta(codigo);
+        int visitas = RepositorioServicios.contarServiciosTarjeta(codigo);
 
         request.setAttribute("codigoBuscado", codigo);
-        request.setAttribute("clienteEncontrado", resultado);
+        request.setAttribute("tarjetaExiste", existe);
+        request.setAttribute("historialTarjeta", historial);
+        request.setAttribute("totalVisitas", visitas);
+
         request.getRequestDispatcher("/BuscadorCompras.jsp").forward(request, response);
     }
 }
